@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MACOR — Despacho Aduanero</title>
+  <title>MACOR & ASOCIADOS — Despacho Aduanero</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -45,9 +45,18 @@
     }
     .nav-logo-img img { width: 100%; height: 100%; object-fit: cover; filter: invert(1); }
     .nav-logo-text {
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .nav-logo-name {
       font-family: 'Playfair Display', serif;
-      font-size: 22px; font-weight: 700;
-      letter-spacing: 3px; color: var(--text);
+      font-size: 18px; font-weight: 700;
+      letter-spacing: 2.5px; color: var(--text); line-height: 1.1;
+    }
+    .nav-logo-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--blue); line-height: 1;
     }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { font-size: 13.5px; font-weight: 400; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.2px; }
@@ -256,7 +265,10 @@
       <div class="nav-logo-img">
         <img src="LogoMACOR.png" alt="Logo MACOR">
       </div>
-      <span class="nav-logo-text">MACOR</span>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">MACOR &amp; ASOCIADOS</span>
+        <span class="nav-logo-sub">Despacho Aduanero</span>
+      </div>
     </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
@@ -530,7 +542,10 @@
       <div class="footer-logo-img">
         <img src="LogoMACOR.png" alt="MACOR">
       </div>
-      <span class="footer-logo-text">MACOR</span>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <span class="footer-logo-text">MACOR &amp; ASOCIADOS</span>
+        <span style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Despacho Aduanero</span>
+      </div>
     </div>
     <div class="footer-links">
       <a href="#servicios">Servicios</a>
@@ -540,7 +555,7 @@
       <a href="#contacto">Contacto</a>
       <a href="#">UIF / Cumplimiento</a>
     </div>
-    <div class="footer-copy">© 2026 MACOR · Todos los derechos reservados</div>
+    <div class="footer-copy">© 2026 MACOR &amp; ASOCIADOS · Todos los derechos reservados</div>
   </footer>
 
   <script>
