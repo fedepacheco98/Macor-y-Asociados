@@ -28,7 +28,7 @@
 
     /* NAV */
     nav {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 200;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
@@ -245,13 +245,15 @@
     /* ── HAMBURGER ── */
     .hamburger {
       display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; cursor: pointer; padding: 4px; z-index: 200;
+      background: none; border: none; cursor: pointer; padding: 4px; z-index: 300;
+      position: relative;
     }
     .hamburger span {
       display: block; width: 24px; height: 2px;
       background: var(--text); border-radius: 2px;
       transition: all 0.3s ease;
     }
+    .hamburger.open span { background: var(--text); }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
