@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MACOR — Despacho Aduanero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue: #1B4B8E;
+      --blue-dark: #0f2e5a;
+      --blue-light: #e8eef8;
+      --blue-mid: #163d72;
+      --text: #111;
+      --muted: #666;
+      --subtle: #888;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-alt: #f5f7fb;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 60px; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .nav-logo-img img { width: 100%; height: 100%; object-fit: cover; filter: invert(1); }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      letter-spacing: 3px; color: var(--text);
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13.5px; font-weight: 400; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.2px; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--blue); color: white; border: none;
+      padding: 10px 22px; border-radius: 7px; font-size: 14px; font-weight: 500;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-mid); }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      padding: 80px 60px; background: var(--bg-alt);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(27,75,142,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--blue-light); color: var(--blue);
+      font-size: 11px; font-weight: 500; letter-spacing: 1.4px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 22px;
+    }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 700; line-height: 1.12;
+      letter-spacing: -1.5px; color: var(--text); margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: italic; color: var(--blue); }
+    .hero p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
+    .hero-btns { display: flex; gap: 14px; }
+    .btn-primary {
+      background: var(--blue); color: white; border: none;
+      padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--blue); border: 1.5px solid var(--blue);
+      padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: var(--blue-light); }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card {
+      background: white; border: 1px solid var(--border); border-radius: 14px;
+      padding: 24px 22px; display: flex; flex-direction: column; gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(27,75,142,0.10); }
+    .stat-card.accent { background: var(--blue); border-color: var(--blue); }
+    .stat-card.wide { grid-column: 1 / -1; }
+    .stat-icon { font-size: 22px; margin-bottom: 4px; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: var(--text); line-height: 1; }
+    .stat-card.accent .stat-num { color: white; }
+    .stat-lbl { font-size: 13px; color: var(--subtle); line-height: 1.5; }
+    .stat-card.accent .stat-lbl { color: rgba(255,255,255,0.65); }
+
+    /* SECTIONS */
+    section { padding: 90px 60px; }
+    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; line-height: 1.18; letter-spacing: -0.7px; color: var(--text); max-width: 520px; margin-bottom: 50px; }
+
+    /* SERVICIOS */
+    #servicios { background: white; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .service-card {
+      border: 1px solid var(--border); border-radius: 14px; padding: 32px 26px;
+      background: white; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(27,75,142,0.09); }
+    .service-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 22px; }
+    .service-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* OPERACIONES */
+    #operaciones { background: var(--bg-alt); padding: 90px 60px; }
+    .ie-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 50px; }
+    .ie-card { border-radius: 16px; padding: 40px 36px; transition: transform 0.2s; }
+    .ie-card:hover { transform: translateY(-2px); }
+    .ie-card.light { background: white; border: 1px solid var(--border); }
+    .ie-card.dark { background: var(--blue); border: none; }
+    .ie-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
+    .ie-card.light .ie-badge { background: var(--blue-light); color: var(--blue); }
+    .ie-card.dark .ie-badge { background: rgba(255,255,255,0.15); color: white; }
+    .ie-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+    .ie-card.light h3 { color: var(--text); }
+    .ie-card.dark h3 { color: white; }
+    .ie-card p { font-size: 14px; line-height: 1.75; margin-bottom: 24px; }
+    .ie-card.light p { color: var(--muted); }
+    .ie-card.dark p { color: rgba(255,255,255,0.7); }
+    .ie-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .ie-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.55; }
+    .ie-card.light .ie-list li { color: #555; }
+    .ie-card.dark .ie-list li { color: rgba(255,255,255,0.8); }
+    .ie-list li::before { content: '→'; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+    .ie-card.light .ie-list li::before { color: var(--blue); }
+    .ie-card.dark .ie-list li::before { color: rgba(255,255,255,0.5); }
+
+    /* NOSOTROS */
+    #nosotros { background: white; }
+    .why-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 60px; }
+    .why-intro p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+    .why-card { padding: 32px 28px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .why-num { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--blue-light); font-weight: 700; line-height: 1; margin-bottom: 12px; }
+    .why-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .why-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* HERRAMIENTAS */
+    #herramientas { background: var(--bg-alt); }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+    .tool-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.2s; }
+    .tool-card:hover { border-color: var(--blue); }
+    .tool-icon { font-size: 26px; flex-shrink: 0; }
+    .tool-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .tool-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* NOVEDADES */
+    #novedades { background: white; }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+    .news-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
+    .news-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+    .news-tag { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--blue); background: var(--blue-light); padding: 4px 10px; border-radius: 20px; width: fit-content; }
+    .news-card h4 { font-size: 15px; font-weight: 500; line-height: 1.5; }
+    .news-card p { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .news-date { font-size: 12px; color: var(--subtle); border-top: 1px solid var(--border); padding-top: 12px; }
+
+    /* CONTACTO */
+    #contacto { background: var(--blue-dark); padding: 90px 60px; }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contact-left h2 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: white; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px; }
+    .contact-left p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 36px; }
+    .contact-items { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; }
+    .contact-item-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .contact-item-text strong { display: block; font-size: 13px; font-weight: 500; color: white; margin-bottom: 2px; }
+    .contact-item-text span { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; padding: 13px 16px; font-size: 14px; color: white;
+      font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s, background 0.2s; appearance: none;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); }
+    .contact-form select option { background: #1a3660; color: white; }
+    .contact-form textarea { resize: none; height: 110px; }
+    .contact-form button { background: white; color: var(--blue); border: none; padding: 15px; border-radius: 8px; font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .contact-form button:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: #080f1c; padding: 40px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo-img { width: 32px; height: 32px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 2px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ANIMATIONS */
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      nav .nav-links { display: none; }
+      .hero, section { padding: 60px 24px; }
+      #operaciones, #contacto { padding: 60px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .hero { grid-template-columns: 1fr; gap: 40px; min-height: auto; }
+      .hero h1 { font-size: 36px; }
+      .services-grid, .tools-grid, .news-grid { grid-template-columns: 1fr; }
+      .ie-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .why-intro { grid-template-columns: 1fr; gap: 20px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-img">
+        <img src="data:image/jpeg;base64,LOGOPLACEHOLDER" alt="Logo MACOR">
+      </div>
+      <span class="nav-logo-text">MACOR</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#operaciones">Operaciones</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#herramientas">Herramientas</a></li>
+      <li><a href="#novedades">Novedades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Consultar ahora</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="fade-up">
+      <div class="hero-tag">Despachantes de aduana oficiales · Rosario</div>
+      <h1>Tu comercio exterior,<br>en <em>manos expertas</em></h1>
+      <p>Asesoramos y gestionamos operaciones de importación y exportación con precisión técnica, seguridad jurídica y acompañamiento personalizado en cada etapa del proceso.</p>
+      <div class="hero-btns">
+        <a href="#contacto" class="btn-primary">Solicitar asesoramiento →</a>
+        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-up" style="transition-delay:0.15s">
+      <div class="stat-card">
+        <div class="stat-icon">🚢</div>
+        <div class="stat-num">+500</div>
+        <div class="stat-lbl">Operaciones gestionadas con éxito</div>
+      </div>
+      <div class="stat-card accent">
+        <div class="stat-icon">🌐</div>
+        <div class="stat-num">40+</div>
+        <div class="stat-lbl" style="color:rgba(255,255,255,0.65)">Países de origen y destino</div>
+      </div>
+      <div class="stat-card wide">
+        <div class="stat-icon">🛡️</div>
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">Seguridad jurídica y tributaria garantizada en cada operación</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="section-label fade-up">Nuestros servicios</div>
+    <div class="section-title fade-up">Todo lo que necesitás para operar en comercio exterior</div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">📥</div>
+        <h3>Despacho de Importación</h3>
+        <p>Liquidación completa del despacho cumpliendo todos los requisitos técnico-jurídicos, pago de gravámenes y seguimiento personalizado hasta la entrega de mercadería.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.1s">
+        <div class="service-icon">📤</div>
+        <h3>Despacho de Exportación</h3>
+        <p>Tramitación del permiso de embarque ante la AFIP-DGA, gestión de reintegros y atención personalizada hasta el precintado del medio de transporte.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.2s">
+        <div class="service-icon">✈️</div>
+        <h3>Logística Internacional</h3>
+        <p>Coordinación integral de la cadena de transporte internacional, trabajando con operadores en origen y destino para garantizar tiempos y costos.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🚛</div>
+        <h3>Logística Nacional</h3>
+        <p>Distribución y transporte interno de mercaderías con seguimiento en tiempo real y optimización de costos logísticos dentro del territorio argentino.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.1s">
+        <div class="service-icon">💬</div>
+        <h3>Asesoramiento Aduanero</h3>
+        <p>Consultoría especializada en clasificación arancelaria, regímenes especiales, reintegros y optimización tributaria para operaciones de comercio exterior.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.2s">
+        <div class="service-icon">📋</div>
+        <h3>Proyectos a Medida</h3>
+        <p>Soluciones personalizadas para operaciones complejas, proyectos de inversión y operatorias especiales con atención dedicada y esquemas a medida.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPERACIONES -->
+  <section id="operaciones" style="background:var(--bg-alt)">
+    <div class="section-label fade-up">Cómo trabajamos</div>
+    <div class="section-title fade-up">Gestión integral de importación y exportación</div>
+    <div class="ie-grid">
+      <div class="ie-card light fade-up">
+        <div class="ie-badge">📥 Importación</div>
+        <h3>Gestionamos tu importación de principio a fin</h3>
+        <p>Nos encargamos de la oficialización del despacho, el seguimiento personalizado y la coordinación de la verificación hasta la entrega en el lugar designado por el titular de la mercadería.</p>
+        <ul class="ie-list">
+          <li>Liquidación del despacho con todos los requisitos legales vigentes</li>
+          <li>Pago de gravámenes con fondos previstos por el importador</li>
+          <li>Seguimiento desde la oficialización hasta la verificación</li>
+          <li>Entrega coordinada en horarios y lugares asignados</li>
+          <li>Gestión de permisos previos: SIVEP, SIMI y otros regímenes</li>
+          <li>Clasificación arancelaria y liquidación de tributos</li>
+        </ul>
+      </div>
+      <div class="ie-card dark fade-up" style="transition-delay:0.15s">
+        <div class="ie-badge">📤 Exportación</div>
+        <h3>Exportá con respaldo profesional</h3>
+        <p>Tramitamos el permiso de embarque ante la AFIP-DGA y acompañamos la operación hasta su culminación total, incluyendo la gestión del cobro de reintegros a la exportación.</p>
+        <ul class="ie-list">
+          <li>Solicitud y tramitación del permiso de embarque</li>
+          <li>Atención con personal propio en lugar de carga asignado</li>
+          <li>Seguimiento hasta la culminación y precintado del transporte</li>
+          <li>Gestión del cobro de reintegros a la exportación</li>
+          <li>Asesoramiento en clasificación y posiciones arancelarias</li>
+          <li>Coordinación con organismos de control: SENASA, INAL, otros</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros">
+    <div class="why-intro">
+      <div>
+        <div class="section-label fade-up">¿Por qué elegirnos?</div>
+        <div class="section-title fade-up" style="margin-bottom:0">Respaldo, experiencia y compromiso en cada operación</div>
+      </div>
+      <p class="fade-up" style="align-self:flex-end">
+        Somos un equipo de profesionales con sólida formación en comercio exterior y derecho aduanero. Entendemos que cada operación es única y que el tiempo es un factor crítico. Por eso trabajamos con agilidad, precisión y comunicación constante con nuestros clientes.
+      </p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="why-num">01</div>
+        <h4>Seguridad jurídica y tributaria</h4>
+        <p>Operamos con pleno cumplimiento del Código Aduanero y la normativa AFIP-DGA vigente, garantizando que cada operación esté cubierta legalmente.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:0.1s">
+        <div class="why-num">02</div>
+        <h4>Seguimiento personalizado</h4>
+        <p>Cada operación tiene un profesional responsable asignado que mantiene al cliente informado en tiempo real durante todo el proceso.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:0.2s">
+        <div class="why-num">03</div>
+        <h4>Optimización tributaria</h4>
+        <p>Identificamos los regímenes, posiciones arancelarias y reintegros más convenientes para maximizar la eficiencia de cada operación.</p>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:0.3s">
+        <div class="why-num">04</div>
+        <h4>Respuesta ágil</h4>
+        <p>En comercio exterior los plazos son determinantes. Actuamos con rapidez y precisión para evitar demoras y costos innecesarios.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- HERRAMIENTAS -->
+  <section id="herramientas" style="background:var(--bg-alt)">
+    <div class="section-label fade-up">Herramientas y recursos</div>
+    <div class="section-title fade-up">Información útil para operar</div>
+    <div class="tools-grid">
+      <div class="tool-card fade-up">
+        <div class="tool-icon">📜</div>
+        <div><h4>Legislación y novedades</h4><p>Resoluciones, decretos y comunicaciones de AFIP-DGA actualizadas. Mantenete informado de los cambios normativos que afectan tu operación.</p></div>
+      </div>
+      <div class="tool-card fade-up" style="transition-delay:0.1s">
+        <div class="tool-icon">📑</div>
+        <div><h4>Instructivos operativos</h4><p>Guías paso a paso para los procedimientos más frecuentes: alta de importador, gestión de SIM, tramitación de reintegros y más.</p></div>
+      </div>
+      <div class="tool-card fade-up" style="transition-delay:0.2s">
+        <div class="tool-icon">📝</div>
+        <div><h4>Alta de clientes</h4><p>Formulario de incorporación para nuevos clientes. Comenzá el proceso de alta y te contactamos para comenzar a trabajar juntos.</p></div>
+      </div>
+      <div class="tool-card fade-up">
+        <div class="tool-icon">🔍</div>
+        <div><h4>Consulta de nomenclatura</h4><p>Herramienta de búsqueda en el nomenclador arancelario para identificar la posición correcta de tus mercaderías.</p></div>
+      </div>
+      <div class="tool-card fade-up" style="transition-delay:0.1s">
+        <div class="tool-icon">💰</div>
+        <div><h4>Estimador de tributos</h4><p>Calculá en forma orientativa los aranceles, IVA y demás tributos que aplican a tu operación de importación o exportación.</p></div>
+      </div>
+      <div class="tool-card fade-up" style="transition-delay:0.2s">
+        <div class="tool-icon">🔐</div>
+        <div><h4>Portal de clientes</h4><p>Acceso exclusivo para seguir el estado de tus despachos, consultar documentación y comunicarte con tu despachante asignado.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOVEDADES -->
+  <section id="novedades">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:50px; flex-wrap:wrap; gap:20px">
+      <div>
+        <div class="section-label fade-up">Novedades</div>
+        <div class="section-title fade-up" style="margin-bottom:0">Últimas actualizaciones del sector</div>
+      </div>
+      <a href="#" class="btn-secondary fade-up" style="font-size:14px; padding:10px 20px">Ver todas →</a>
+    </div>
+    <div class="news-grid">
+      <div class="news-card fade-up">
+        <div class="news-tag">Legislación</div>
+        <h4>Nueva modalidad de autorización de apoderados a través del sistema TAD</h4>
+        <p>La AFIP-DGA implementó un nuevo procedimiento para la confirmación de apoderados mediante la plataforma de Trámites a Distancia.</p>
+        <div class="news-date">18 de julio, 2024</div>
+      </div>
+      <div class="news-card fade-up" style="transition-delay:0.1s">
+        <div class="news-tag">Operaciones</div>
+        <h4>Reanudación de plazos en materia aduanera suspendidos por fuerza mayor</h4>
+        <p>Se reanudan los plazos oportunamente suspendidos en procedimientos aduaneros. Conocé las fechas y cómo afecta a tus trámites en curso.</p>
+        <div class="news-date">3 de diciembre, 2024</div>
+      </div>
+      <div class="news-card fade-up" style="transition-delay:0.2s">
+        <div class="news-tag">Exportaciones</div>
+        <h4>Actualización de derechos de exportación — Decreto 789/2024 Anexo I</h4>
+        <p>Se publicaron las alícuotas actualizadas de derechos de exportación para diferentes posiciones arancelarias. Consultá el detalle completo.</p>
+        <div class="news-date">6 de octubre, 2024</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" style="background:var(--blue-dark); padding:90px 60px">
+    <div class="contact-inner">
+      <div class="contact-left fade-up">
+        <h2>¿Tenés una consulta sobre tu operación?</h2>
+        <p>Completá el formulario y nos ponemos en contacto a la brevedad. Nuestro equipo está disponible para asesorarte sin compromiso.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text"><strong>Email</strong><span>info@macor.com.ar</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text"><strong>Teléfono</strong><span>+54 341 000-0000</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text"><strong>Ubicación</strong><span>Rosario, Santa Fe, Argentina</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div class="contact-item-text"><strong>Horario de atención</strong><span>Lunes a viernes de 9 a 18 hs</span></div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form fade-up" style="transition-delay:0.15s" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input type="text" placeholder="Razón social" required>
+          <input type="text" placeholder="Persona de contacto" required>
+        </div>
+        <div class="form-row">
+          <input type="email" placeholder="E-mail" required>
+          <input type="tel" placeholder="Teléfono">
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="Ciudad">
+          <input type="text" placeholder="Provincia / País">
+        </div>
+        <select>
+          <option value="" disabled selected>Tipo de consulta</option>
+          <option>Importación</option>
+          <option>Exportación</option>
+          <option>Logística internacional</option>
+          <option>Logística nacional</option>
+          <option>Asesoramiento</option>
+          <option>Otro</option>
+        </select>
+        <textarea placeholder="Describí tu consulta o necesidad con el mayor detalle posible..."></textarea>
+        <button type="submit">Enviar consulta →</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <div class="footer-logo-img">
+        <img src="data:image/jpeg;base64,LOGOPLACEHOLDER" alt="MACOR">
+      </div>
+      <span class="footer-logo-text">MACOR</span>
+    </div>
+    <div class="footer-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#operaciones">Operaciones</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#herramientas">Herramientas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#">UIF / Cumplimiento</a>
+    </div>
+    <div class="footer-copy">© 2026 MACOR · Todos los derechos reservados</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✓ Consulta enviada';
+      btn.style.background = '#d1fae5';
+      btn.style.color = '#065f46';
+      setTimeout(() => {
+        btn.textContent = 'Enviar consulta →';
+        btn.style.background = '';
+        btn.style.color = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
