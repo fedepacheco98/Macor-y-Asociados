@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estudio MACOR — Despacho Aduanero y Logística</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -24,7 +24,7 @@
       --bg-alt: #f4f6fb;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+    body { font-family: 'Source Sans 3', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
 
     /* NAV */
     nav {
@@ -51,23 +51,23 @@
       display: flex; flex-direction: column; gap: 1px;
     }
     .nav-logo-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: 18px; font-weight: 700;
       letter-spacing: 2.5px; color: var(--text); line-height: 1.1;
     }
     .nav-logo-sub {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Source Sans 3', sans-serif;
       font-size: 10px; font-weight: 400;
       letter-spacing: 2px; text-transform: uppercase;
       color: var(--gold); line-height: 1;
     }
     .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { font-size: 13.5px; font-weight: 400; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.2px; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; letter-spacing: 0.2px; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
       background: var(--blue); color: white; border: none;
-      padding: 10px 22px; border-radius: 7px; font-size: 14px; font-weight: 500;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none;
+      padding: 11px 24px; border-radius: 7px; font-size: 16px; font-weight: 600;
+      font-family: 'Source Sans 3', sans-serif; cursor: pointer; text-decoration: none;
       transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--blue-mid); }
@@ -89,30 +89,30 @@
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--gold-light); color: var(--gold-mid);
-      font-size: 11px; font-weight: 500; letter-spacing: 1.4px; text-transform: uppercase;
+      font-size: 13px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase;
       padding: 6px 14px; border-radius: 20px; margin-bottom: 22px;
     }
     .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 52px; font-weight: 700; line-height: 1.12;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 58px; font-weight: 700; line-height: 1.1;
       letter-spacing: -1.5px; color: var(--text); margin-bottom: 22px;
     }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
+    .hero h1 em { font-style: normal; color: var(--gold); font-weight: 700; }
+    .hero p { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
     .hero-btns { display: flex; gap: 14px; }
     .btn-primary {
       background: var(--blue); color: white; border: none;
-      padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none;
+      padding: 15px 30px; border-radius: 8px; font-size: 17px; font-weight: 600;
+      font-family: 'Source Sans 3', sans-serif; cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px;
       transition: background 0.2s, transform 0.15s;
     }
     .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
     .btn-secondary {
       background: transparent; color: var(--gold-mid); border: 1.5px solid var(--gold);
-      padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none;
+      padding: 15px 30px; border-radius: 8px; font-size: 17px; font-weight: 600;
+      font-family: 'Source Sans 3', sans-serif; cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s;
     }
     .btn-secondary:hover { background: var(--gold-light); }
@@ -123,18 +123,29 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .stat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(27,75,142,0.10); }
-    .stat-card.accent { background: var(--gold); border-color: var(--gold); }
-    .stat-card.wide { grid-column: 1 / -1; }
-    .stat-icon { font-size: 22px; margin-bottom: 4px; }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: var(--text); line-height: 1; }
-    .stat-card.accent .stat-num { color: var(--blue-dark); }
-    .stat-lbl { font-size: 13px; color: var(--subtle); line-height: 1.5; }
-    .stat-card.accent .stat-lbl { color: rgba(13,36,86,0.7); }
+    /* FEAT CARDS */
+    .hero-stats { display: flex; flex-direction: column; gap: 16px; }
+    .feat-card {
+      display: flex; align-items: center; gap: 20px;
+      background: white; border: 1px solid var(--border);
+      border-left: 5px solid var(--blue);
+      border-radius: 12px; padding: 22px 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feat-card:hover { transform: translateX(4px); box-shadow: 0 8px 28px rgba(27,75,142,0.10); }
+    .feat-card--gold { border-left-color: var(--gold); }
+    .feat-card--dark { background: var(--blue); border-color: var(--blue); border-left-color: var(--gold); }
+    .feat-icon { font-size: 32px; flex-shrink: 0; }
+    .feat-body { display: flex; flex-direction: column; gap: 3px; }
+    .feat-num { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--text); line-height: 1; }
+    .feat-card--dark .feat-num { color: white; }
+    .feat-lbl { font-size: 15px; font-weight: 500; color: var(--muted); }
+    .feat-card--dark .feat-lbl { color: rgba(255,255,255,0.65); }
 
     /* SECTIONS */
     section { padding: 90px 60px; }
-    .section-label { font-size: 11px; font-weight: 500; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold-mid); margin-bottom: 12px; }
-    .section-title { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; line-height: 1.18; letter-spacing: -0.7px; color: var(--text); max-width: 520px; margin-bottom: 50px; }
+    .section-label { font-size: 13px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gold-mid); margin-bottom: 12px; }
+    .section-title { font-family: 'Libre Baskerville', serif; font-size: 44px; font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; color: var(--text); max-width: 560px; margin-bottom: 50px; }
 
     /* SERVICIOS */
     #servicios { background: white; }
@@ -145,8 +156,8 @@
     }
     .service-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(201,168,76,0.15); }
     .service-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--gold-light); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 22px; }
-    .service-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 10px; }
-    .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .service-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: 16px; font-weight: 400; color: var(--muted); line-height: 1.7; }
 
     /* OPERACIONES */
     #operaciones { background: var(--bg-alt); padding: 90px 60px; }
@@ -158,14 +169,14 @@
     .ie-badge { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 20px; }
     .ie-card.light .ie-badge { background: var(--gold-light); color: var(--gold-mid); }
     .ie-card.dark .ie-badge { background: rgba(255,255,255,0.15); color: var(--gold); }
-    .ie-card h3 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+    .ie-card h3 { font-family: 'Libre Baskerville', serif; font-size: 30px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
     .ie-card.light h3 { color: var(--text); }
     .ie-card.dark h3 { color: white; }
-    .ie-card p { font-size: 14px; line-height: 1.75; margin-bottom: 24px; }
+    .ie-card p { font-size: 16px; font-weight: 400; line-height: 1.75; margin-bottom: 24px; }
     .ie-card.light p { color: var(--muted); }
     .ie-card.dark p { color: rgba(255,255,255,0.7); }
     .ie-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .ie-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.55; }
+    .ie-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; font-weight: 400; line-height: 1.55; }
     .ie-card.light .ie-list li { color: #555; }
     .ie-card.dark .ie-list li { color: rgba(255,255,255,0.8); }
     .ie-list li::before { content: '→'; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
@@ -175,12 +186,12 @@
     /* NOSOTROS */
     #nosotros { background: white; }
     .why-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 60px; }
-    .why-intro p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+    .why-intro p { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.75; }
     .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
     .why-card { padding: 32px 28px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .why-num { font-family: 'Playfair Display', serif; font-size: 42px; color: var(--gold-light); font-weight: 700; line-height: 1; margin-bottom: 12px; }
-    .why-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
-    .why-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .why-num { font-family: 'Libre Baskerville', serif; font-size: 42px; color: var(--gold-light); font-weight: 700; line-height: 1; margin-bottom: 12px; }
+    .why-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .why-card p { font-size: 15px; font-weight: 400; color: var(--muted); line-height: 1.65; }
 
     /* HERRAMIENTAS */
     #herramientas { background: var(--bg-alt); }
@@ -188,8 +199,8 @@
     .tool-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; display: flex; align-items: flex-start; gap: 16px; transition: border-color 0.2s; }
     .tool-card:hover { border-color: var(--gold); }
     .tool-icon { font-size: 26px; flex-shrink: 0; }
-    .tool-card h4 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
-    .tool-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .tool-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .tool-card p { font-size: 15px; font-weight: 400; color: var(--muted); line-height: 1.6; }
 
     /* NOVEDADES */
     #novedades { background: white; }
@@ -197,32 +208,32 @@
     .news-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
     .news-card:hover { border-color: var(--gold); transform: translateY(-2px); }
     .news-tag { font-size: 10px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gold-mid); background: var(--gold-light); padding: 4px 10px; border-radius: 20px; width: fit-content; }
-    .news-card h4 { font-size: 15px; font-weight: 500; line-height: 1.5; }
-    .news-card p { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .news-card h4 { font-size: 18px; font-weight: 700; line-height: 1.5; }
+    .news-card p { font-size: 15px; font-weight: 400; color: var(--muted); line-height: 1.6; flex: 1; }
     .news-date { font-size: 12px; color: var(--subtle); border-top: 1px solid var(--border); padding-top: 12px; }
 
     /* CONTACTO */
     #contacto { background: var(--blue-dark); padding: 90px 60px; }
     .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
-    .contact-left h2 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: white; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 16px; }
-    .contact-left p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 36px; }
+    .contact-left h2 { font-family: 'Libre Baskerville', serif; font-size: 44px; font-weight: 700; color: white; line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 16px; }
+    .contact-left p { font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 36px; }
     .contact-items { display: flex; flex-direction: column; gap: 16px; }
     .contact-item { display: flex; align-items: center; gap: 14px; }
     .contact-item-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-    .contact-item-text strong { display: block; font-size: 13px; font-weight: 500; color: white; margin-bottom: 2px; }
-    .contact-item-text span { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .contact-item-text strong { display: block; font-size: 15px; font-weight: 600; color: white; margin-bottom: 2px; }
+    .contact-item-text span { font-size: 15px; color: rgba(255,255,255,0.55); }
     .contact-form { display: flex; flex-direction: column; gap: 14px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .contact-form input, .contact-form textarea, .contact-form select {
       width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px; padding: 13px 16px; font-size: 14px; color: white;
-      font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s, background 0.2s; appearance: none;
+      border-radius: 8px; padding: 14px 16px; font-size: 16px; color: white;
+      font-family: 'Source Sans 3', sans-serif; outline: none; transition: border-color 0.2s, background 0.2s; appearance: none;
     }
     .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
     .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.1); }
     .contact-form select option { background: #1a3660; color: white; }
     .contact-form textarea { resize: none; height: 110px; }
-    .contact-form button { background: white; color: var(--blue); border: none; padding: 15px; border-radius: 8px; font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+    .contact-form button { background: white; color: var(--blue); border: none; padding: 16px; border-radius: 8px; font-size: 17px; font-weight: 600; font-family: 'Source Sans 3', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.15s; }
     .contact-form button:hover { background: var(--blue-light); transform: translateY(-1px); }
 
     /* FOOTER */
@@ -230,17 +241,36 @@
     .footer-logo { display: flex; align-items: center; gap: 10px; }
     .footer-logo-img { width: 32px; height: 32px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
     .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
-    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 2px; }
+    .footer-logo-text { font-family: 'Libre Baskerville', serif; font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: 2px; }
     .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a { font-size: 15px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.75); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-copy { font-size: 14px; color: rgba(255,255,255,0.3); }
 
     hr { border: none; border-top: 1px solid var(--border); margin: 0; }
 
     /* ANIMATIONS */
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* SOCIAL CARDS */
+    .social-card {
+      display: flex; align-items: center; gap: 24px;
+      background: white; border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px 36px; text-decoration: none;
+      min-width: 280px; flex: 1; max-width: 380px;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .social-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,75,142,0.12); border-color: var(--gold); }
+    .social-icon-wrap {
+      width: 64px; height: 64px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .social-icon-wrap--ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-icon-wrap--fb { background: #1877f2; }
+    .social-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .social-handle { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
+    .social-cta { font-size: 15px; font-weight: 600; color: var(--gold-mid); }
 
     /* ── HAMBURGER ── */
     .hamburger {
@@ -266,15 +296,15 @@
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px; font-weight: 700; color: var(--text);
+      font-family: 'Libre Baskerville', serif;
+      font-size: 30px; font-weight: 700; color: var(--text);
       text-decoration: none; letter-spacing: -0.5px;
       transition: color 0.2s;
     }
     .mobile-menu a:hover { color: var(--blue); }
     .mobile-menu .mobile-cta {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px; font-weight: 500;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 18px; font-weight: 600;
       background: var(--gold); color: var(--blue-dark);
       padding: 14px 36px; border-radius: 8px; margin-top: 8px;
     }
@@ -289,8 +319,8 @@
         grid-template-columns: 1fr; gap: 40px;
         min-height: auto; padding: 52px 20px 48px;
       }
-      .hero h1 { font-size: 38px; letter-spacing: -1px; }
-      .hero p { font-size: 15px; max-width: 100%; }
+      .hero h1 { font-size: 44px; letter-spacing: -1px; }
+      .hero p { font-size: 17px; max-width: 100%; }
       .hero-btns { flex-direction: column; gap: 12px; }
       .hero-btns a { justify-content: center; }
       .hero-stats { grid-template-columns: 1fr 1fr; }
@@ -298,7 +328,7 @@
       section { padding: 60px 20px; }
       #operaciones { padding: 60px 20px; }
       #contacto { padding: 60px 20px; }
-      .section-title { font-size: 30px; }
+      .section-title { font-size: 36px; }
 
       .services-grid { grid-template-columns: 1fr; gap: 14px; }
       .ie-grid { grid-template-columns: 1fr; }
@@ -323,9 +353,9 @@
 
       .hero { padding: 40px 18px 40px; }
       .hero-tag { font-size: 10px; padding: 5px 12px; }
-      .hero h1 { font-size: 32px; }
-      .hero p { font-size: 14px; }
-      .btn-primary, .btn-secondary { padding: 13px 20px; font-size: 14px; }
+      .hero h1 { font-size: 36px; }
+      .hero p { font-size: 16px; }
+      .btn-primary, .btn-secondary { padding: 14px 22px; font-size: 16px; }
 
       .hero-stats { grid-template-columns: 1fr; }
       .stat-card.wide { grid-column: 1; }
@@ -334,11 +364,11 @@
       section { padding: 48px 18px; }
       #operaciones { padding: 48px 18px; }
       #contacto { padding: 48px 18px; }
-      .section-title { font-size: 26px; letter-spacing: -0.3px; }
+      .section-title { font-size: 30px; letter-spacing: -0.3px; }
 
       .service-card { padding: 22px 18px; }
       .ie-card { padding: 24px 20px; }
-      .ie-card h3 { font-size: 21px; }
+      .ie-card h3 { font-size: 25px; }
 
       .why-grid { grid-template-columns: 1fr; }
       .why-card { padding: 22px 18px; }
@@ -347,7 +377,7 @@
       .tool-card { flex-direction: row; gap: 14px; padding: 20px 16px; }
       .news-card { padding: 20px 18px; }
 
-      .contact-left h2 { font-size: 28px; }
+      .contact-left h2 { font-size: 32px; }
       .contact-items { gap: 12px; }
       .contact-item-icon { width: 36px; height: 36px; font-size: 16px; }
 
@@ -391,29 +421,34 @@
   <section class="hero" id="inicio">
     <div class="fade-up">
       <img src="EstudioMACOR2.png" alt="Estudio MACOR" style="width:380px;height:auto;display:block;margin-bottom:28px;">
-      <div class="hero-tag">Despachantes de aduana oficiales · Rosario</div>
       <h1>Tu comercio exterior,<br>en <em>manos expertas</em></h1>
-      <p>Asesoramos y gestionamos operaciones de importación y permisos de embarque con precisión técnica, seguridad jurídica y acompañamiento personalizado en cada etapa del proceso.</p>
+      <p>Asesoramos y gestionamos operaciones de importación y exportación con precisión técnica, seguridad jurídica y acompañamiento personalizado en cada etapa del proceso.</p>
       <div class="hero-btns">
         <a href="#contacto" class="btn-primary">Solicitar asesoramiento →</a>
         <a href="#servicios" class="btn-secondary">Ver servicios</a>
       </div>
     </div>
     <div class="hero-stats fade-up" style="transition-delay:0.15s">
-      <div class="stat-card">
-        <div class="stat-icon">🚢</div>
-        <div class="stat-num">+500</div>
-        <div class="stat-lbl">Operaciones gestionadas con éxito</div>
+      <div class="feat-card">
+        <div class="feat-icon">🚢</div>
+        <div class="feat-body">
+          <div class="feat-num">+500</div>
+          <div class="feat-lbl">Operaciones gestionadas</div>
+        </div>
       </div>
-      <div class="stat-card accent">
-        <div class="stat-icon">🌐</div>
-        <div class="stat-num">Mundial</div>
-        <div class="stat-lbl" style="color:rgba(13,36,86,0.7)">Operamos con todos los países del mundo</div>
+      <div class="feat-card feat-card--gold">
+        <div class="feat-icon">🌐</div>
+        <div class="feat-body">
+          <div class="feat-num">Mundial</div>
+          <div class="feat-lbl">Cobertura internacional</div>
+        </div>
       </div>
-      <div class="stat-card wide">
-        <div class="stat-icon">🛡️</div>
-        <div class="stat-num">100%</div>
-        <div class="stat-lbl">Seguridad jurídica y tributaria garantizada en cada operación</div>
+      <div class="feat-card feat-card--dark">
+        <div class="feat-icon">🛡️</div>
+        <div class="feat-body">
+          <div class="feat-num">100%</div>
+          <div class="feat-lbl">Seguridad jurídica garantizada</div>
+        </div>
       </div>
     </div>
   </section>
@@ -459,7 +494,7 @@
   <!-- OPERACIONES -->
   <section id="operaciones" style="background:var(--bg-alt)">
     <div class="section-label fade-up">Cómo trabajamos</div>
-    <div class="section-title fade-up">Gestión integral de importación y permiso de embarque</div>
+    <div class="section-title fade-up">Gestión integral de importación y exportación</div>
     <div class="ie-grid">
       <div class="ie-card light fade-up">
         <div class="ie-badge">📥 Importación</div>
@@ -475,8 +510,8 @@
         </ul>
       </div>
       <div class="ie-card dark fade-up" style="transition-delay:0.15s">
-        <div class="ie-badge">📤 Permiso de Embarque</div>
-        <h3>Gestionamos tu permiso de embarque</h3>
+        <div class="ie-badge">📤 Exportación</div>
+        <h3>Exportá con respaldo profesional</h3>
         <p>Tramitamos el permiso de embarque ante la AFIP-DGA y acompañamos la operación hasta su culminación total, incluyendo la gestión del cobro de reintegros.</p>
         <ul class="ie-list">
           <li>Solicitud y tramitación del permiso de embarque</li>
@@ -559,34 +594,43 @@
     </div>
   </section>
 
-  <!-- NOVEDADES -->
+  <!-- REDES SOCIALES -->
   <section id="novedades">
-    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:50px; flex-wrap:wrap; gap:20px">
-      <div>
-        <div class="section-label fade-up">Novedades</div>
-        <div class="section-title fade-up" style="margin-bottom:0">Últimas actualizaciones del sector</div>
-      </div>
-      <a href="#" class="btn-secondary fade-up" style="font-size:14px; padding:10px 20px">Ver todas →</a>
-    </div>
-    <div class="news-grid">
-      <div class="news-card fade-up">
-        <div class="news-tag">Legislación</div>
-        <h4>Nueva modalidad de autorización de apoderados a través del sistema TAD</h4>
-        <p>La AFIP-DGA implementó un nuevo procedimiento para la confirmación de apoderados mediante la plataforma de Trámites a Distancia.</p>
-        <div class="news-date">18 de julio, 2024</div>
-      </div>
-      <div class="news-card fade-up" style="transition-delay:0.1s">
-        <div class="news-tag">Operaciones</div>
-        <h4>Reanudación de plazos en materia aduanera suspendidos por fuerza mayor</h4>
-        <p>Se reanudan los plazos oportunamente suspendidos en procedimientos aduaneros. Conocé las fechas y cómo afecta a tus trámites en curso.</p>
-        <div class="news-date">3 de diciembre, 2024</div>
-      </div>
-      <div class="news-card fade-up" style="transition-delay:0.2s">
-        <div class="news-tag">Exportaciones</div>
-        <h4>Actualización de derechos de exportación — Decreto 789/2024 Anexo I</h4>
-        <p>Se publicaron las alícuotas actualizadas de derechos de exportación para diferentes posiciones arancelarias. Consultá el detalle completo.</p>
-        <div class="news-date">6 de octubre, 2024</div>
-      </div>
+    <div class="section-label fade-up">Seguinos</div>
+    <div class="section-title fade-up">Estamos en las redes sociales</div>
+    <p class="fade-up" style="font-size:18px;color:var(--muted);margin-bottom:48px;max-width:520px;">Seguinos en Instagram y Facebook para mantenerte al día con novedades del sector, actualizaciones normativas y noticias de Estudio MACOR.</p>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+
+      <!-- INSTAGRAM -->
+      <a href="https://www.instagram.com/estudiomacor" target="_blank" class="social-card fade-up">
+        <div class="social-icon-wrap social-icon-wrap--ig">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+          </svg>
+        </div>
+        <div class="social-body">
+          <div class="social-name">Instagram</div>
+          <div class="social-handle">@estudiomacor</div>
+          <div class="social-cta">Seguir →</div>
+        </div>
+      </a>
+
+      <!-- FACEBOOK -->
+      <a href="https://www.facebook.com/estudiomacor" target="_blank" class="social-card fade-up" style="transition-delay:0.1s">
+        <div class="social-icon-wrap social-icon-wrap--fb">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="social-body">
+          <div class="social-name">Facebook</div>
+          <div class="social-handle">Estudio MACOR</div>
+          <div class="social-cta">Seguir →</div>
+        </div>
+      </a>
+
     </div>
   </section>
 
