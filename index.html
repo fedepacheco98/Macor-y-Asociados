@@ -253,24 +253,35 @@
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* SOCIAL CARDS */
-    .social-card {
-      display: flex; align-items: center; gap: 24px;
-      background: white; border: 1px solid var(--border); border-radius: 16px;
-      padding: 28px 36px; text-decoration: none;
-      min-width: 280px; flex: 1; max-width: 380px;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    /* SOCIAL CARDS V2 */
+    .social-card-v2 {
+      display: flex; flex-direction: column;
+      border-radius: 18px; overflow: hidden;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
-    .social-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,75,142,0.12); border-color: var(--gold); }
-    .social-icon-wrap {
-      width: 64px; height: 64px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    .social-card-v2:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .social-card-v2-top {
+      display: flex; align-items: center; gap: 16px;
+      padding: 28px 28px 24px;
     }
-    .social-icon-wrap--ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-    .social-icon-wrap--fb { background: #1877f2; }
-    .social-name { font-family: 'Libre Baskerville', serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .social-handle { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
-    .social-cta { font-size: 15px; font-weight: 600; color: var(--gold-mid); }
+    .social-card-v2-top--ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .social-card-v2-top--fb { background: #1877f2; }
+    .social-card-v2-netname { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+    .social-card-v2-body {
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 22px 28px; flex: 1;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .social-card-v2-handle { font-size: 17px; color: rgba(255,255,255,0.55); font-weight: 400; }
+    .social-card-v2-btn {
+      display: inline-flex; align-items: center;
+      font-size: 16px; font-weight: 600; color: var(--gold);
+      transition: gap 0.2s;
+    }
+    .social-card-v2:hover .social-card-v2-btn { gap: 6px; }
 
     /* ── HAMBURGER ── */
     .hamburger {
@@ -332,6 +343,9 @@
 
       .services-grid { grid-template-columns: 1fr; gap: 14px; }
       .ie-grid { grid-template-columns: 1fr; }
+      #novedades { padding: 60px 20px; }
+      #novedades > div { padding: 0 !important; }
+      #novedades .fade-up[style*="grid"] { grid-template-columns: 1fr; }
       .ie-card { padding: 28px 24px; }
       .why-intro { grid-template-columns: 1fr; gap: 16px; }
       .why-grid { grid-template-columns: 1fr 1fr; }
@@ -398,7 +412,6 @@
       <li><a href="#operaciones">Operaciones</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#herramientas">Herramientas</a></li>
-      <li><a href="#novedades">Novedades</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Consultar ahora</a>
@@ -413,7 +426,6 @@
     <a href="#operaciones" onclick="closeMenu()">Operaciones</a>
     <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
     <a href="#herramientas" onclick="closeMenu()">Herramientas</a>
-    <a href="#novedades" onclick="closeMenu()">Novedades</a>
     <a href="#contacto" class="mobile-cta" onclick="closeMenu()">Consultar ahora</a>
   </div>
 
@@ -432,7 +444,7 @@
       <div class="feat-card">
         <div class="feat-icon">🚢</div>
         <div class="feat-body">
-          <div class="feat-num">+500</div>
+          <div class="feat-num">+6.000</div>
           <div class="feat-lbl">Operaciones gestionadas</div>
         </div>
       </div>
@@ -595,42 +607,43 @@
   </section>
 
   <!-- REDES SOCIALES -->
-  <section id="novedades">
-    <div class="section-label fade-up">Seguinos</div>
-    <div class="section-title fade-up">Estamos en las redes sociales</div>
-    <p class="fade-up" style="font-size:18px;color:var(--muted);margin-bottom:48px;max-width:520px;">Seguinos en Instagram y Facebook para mantenerte al día con novedades del sector, actualizaciones normativas y noticias de Estudio MACOR.</p>
-    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+  <section id="novedades" style="background:var(--blue-dark);padding:90px 60px;">
+    <div style="max-width:700px;margin:0 auto;text-align:center;">
+      <div class="section-label fade-up" style="color:var(--gold);justify-content:center;display:flex;">Seguinos</div>
+      <div class="fade-up" style="font-family:'Libre Baskerville',serif;font-size:44px;font-weight:700;color:white;line-height:1.15;letter-spacing:-0.5px;margin-bottom:18px;">Seguinos en nuestras redes</div>
+      <p class="fade-up" style="font-size:18px;color:rgba(255,255,255,0.6);margin-bottom:56px;line-height:1.7;">Contenido del sector, actualizaciones normativas y novedades de Estudio MACOR. Seguinos para estar siempre informado.</p>
 
-      <!-- INSTAGRAM -->
-      <a href="https://www.instagram.com/estudiomacor" target="_blank" class="social-card fade-up">
-        <div class="social-icon-wrap social-icon-wrap--ig">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.8"/>
-            <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.8"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="white"/>
-          </svg>
-        </div>
-        <div class="social-body">
-          <div class="social-name">Instagram</div>
-          <div class="social-handle">@estudiomacor</div>
-          <div class="social-cta">Seguir →</div>
-        </div>
-      </a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="fade-up">
 
-      <!-- FACEBOOK -->
-      <a href="https://www.facebook.com/estudiomacor" target="_blank" class="social-card fade-up" style="transition-delay:0.1s">
-        <div class="social-icon-wrap social-icon-wrap--fb">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="social-body">
-          <div class="social-name">Facebook</div>
-          <div class="social-handle">Estudio MACOR</div>
-          <div class="social-cta">Seguir →</div>
-        </div>
-      </a>
+        <!-- INSTAGRAM -->
+        <a href="https://www.instagram.com/estudiomacor" target="_blank" class="social-card-v2">
+          <div class="social-card-v2-top social-card-v2-top--ig">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.8"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+            </svg>
+            <span class="social-card-v2-netname">Instagram</span>
+          </div>
+          <div class="social-card-v2-body">
+            <div class="social-card-v2-handle">@estudiomacor</div>
+          </div>
+        </a>
 
+        <!-- FACEBOOK -->
+        <a href="https://www.facebook.com/estudiomacor" target="_blank" class="social-card-v2">
+          <div class="social-card-v2-top social-card-v2-top--fb">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 2H15C13.67 2 12.4 2.53 11.46 3.46C10.53 4.4 10 5.67 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73 14.11 6.48 14.29 6.29C14.48 6.11 14.73 6 15 6H18V2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="social-card-v2-netname">Facebook</span>
+          </div>
+          <div class="social-card-v2-body">
+            <div class="social-card-v2-handle">Estudio MACOR</div>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
