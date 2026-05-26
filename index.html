@@ -29,16 +29,14 @@
     /* NAV */
     nav {
       position: sticky; top: 0; z-index: 200;
-      background: rgba(255,255,255,0.96);
+      background: rgba(255,255,255,0.97);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
-      padding: 0 60px; height: 80px;
+      padding: 10px 60px; height: 80px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
-    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 56px; width: auto; object-fit: contain; display: block; }
     .nav-logo-img {
       width: 42px; height: 42px;
       border-radius: 50%;
@@ -253,35 +251,26 @@
     .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* SOCIAL CARDS V2 */
-    .social-card-v2 {
-      display: flex; flex-direction: column;
-      border-radius: 18px; overflow: hidden;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-    .social-card-v2:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-    .social-card-v2-top {
+    /* SOCIAL PILLS */
+    .social-pill {
       display: flex; align-items: center; gap: 16px;
-      padding: 28px 28px 24px;
+      background: white; border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 22px;
+      text-decoration: none; min-width: 320px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .social-card-v2-top--ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-    .social-card-v2-top--fb { background: #1877f2; }
-    .social-card-v2-netname { font-family: 'Libre Baskerville', serif; font-size: 24px; font-weight: 700; color: white; letter-spacing: -0.3px; }
-    .social-card-v2-body {
-      background: rgba(255,255,255,0.06);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 22px 28px; flex: 1;
-      display: flex; flex-direction: column; gap: 12px;
+    .social-pill:hover { border-color: var(--gold); transform: translateX(4px); box-shadow: 0 8px 24px rgba(27,75,142,0.09); }
+    .social-pill-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
     }
-    .social-card-v2-handle { font-size: 17px; color: rgba(255,255,255,0.55); font-weight: 400; }
-    .social-card-v2-btn {
-      display: inline-flex; align-items: center;
-      font-size: 16px; font-weight: 600; color: var(--gold);
-      transition: gap 0.2s;
-    }
-    .social-card-v2:hover .social-card-v2-btn { gap: 6px; }
+    .social-pill-icon--ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-pill-icon--fb { background: #1877f2; }
+    .social-pill-info { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    .social-pill-name { font-size: 16px; font-weight: 700; color: var(--text); }
+    .social-pill-handle { font-size: 14px; color: var(--muted); }
+    .social-pill-arrow { color: var(--subtle); flex-shrink: 0; transition: color 0.2s; }
+    .social-pill:hover .social-pill-arrow { color: var(--gold-mid); }
 
     /* SELECT ARROW */
     .select-wrap { position: relative; }
@@ -331,14 +320,11 @@
 
     /* ── TABLET (≤ 900px) ── */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; height: 70px; justify-content: space-between; }
+      nav { padding: 10px 20px; height: 70px; }
       nav .nav-links, nav .nav-cta { display: none; }
       .hamburger { display: flex; }
-
-      /* NAV LOGO centrado en móvil */
-      nav { position: relative; }
-      nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
-      nav .nav-logo img { height: 44px; width: auto; }
+      nav .nav-logo { flex: 1; justify-content: center; }
+      nav .nav-logo img { height: 46px; }
 
       .hero {
         grid-template-columns: 1fr; gap: 36px;
@@ -355,9 +341,9 @@
       section { padding: 60px 20px; }
       #operaciones { padding: 60px 20px; }
       #contacto { padding: 60px 20px; }
-      #novedades { padding: 60px 20px !important; }
-      #novedades > div { padding: 0 !important; max-width: 100% !important; }
-      #novedades .fade-up[style*="grid"] { grid-template-columns: 1fr !important; gap: 16px !important; }
+      #novedades { padding: 50px 20px !important; }
+      #novedades > div { flex-direction: column !important; gap: 24px !important; }
+      .social-pill { min-width: unset; width: 100%; }
       .section-title { font-size: 34px; }
 
       .services-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -381,8 +367,9 @@
 
     /* ── MOBILE (≤ 480px) ── */
     @media (max-width: 480px) {
-      nav { height: 60px; padding: 0 16px; }
-      nav .nav-logo img { height: 36px; }
+      nav { height: 62px; padding: 8px 16px; }
+      nav .nav-logo img { height: 38px; }
+      nav .nav-logo { flex: 1; justify-content: center; }
 
       .hero { padding: 36px 16px 36px; gap: 28px; }
       .hero img[alt="Estudio MACOR"] { width: 200px !important; margin-bottom: 16px !important; }
@@ -653,40 +640,46 @@
   </section>
 
   <!-- REDES SOCIALES -->
-  <section id="novedades" style="background:var(--blue-dark);padding:90px 60px;">
-    <div style="max-width:700px;margin:0 auto;text-align:center;">
-      <div class="section-label fade-up" style="color:var(--gold);justify-content:center;display:flex;">Seguinos</div>
-      <div class="fade-up" style="font-family:'Libre Baskerville',serif;font-size:44px;font-weight:700;color:white;line-height:1.15;letter-spacing:-0.5px;margin-bottom:18px;">Seguinos en nuestras redes</div>
-      <p class="fade-up" style="font-size:18px;color:rgba(255,255,255,0.6);margin-bottom:56px;line-height:1.7;">Contenido del sector, actualizaciones normativas y novedades de Estudio MACOR. Seguinos para estar siempre informado.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="fade-up">
+  <section id="novedades" style="background:var(--bg-alt); padding:70px 60px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:32px;">
+      <div class="fade-up">
+        <div class="section-title" style="margin-bottom:10px;">Seguinos en nuestras redes</div>
+        <p style="font-size:17px;color:var(--muted);max-width:420px;line-height:1.7;">Contenido del sector, actualizaciones normativas y novedades de Estudio MACOR.</p>
+      </div>
+      <div class="fade-up" style="display:flex; flex-direction:column; gap:16px;">
 
         <!-- INSTAGRAM -->
-        <a href="https://www.instagram.com/estudiomacor" target="_blank" class="social-card-v2">
-          <div class="social-card-v2-top social-card-v2-top--ig">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="1.8"/>
-              <circle cx="12" cy="12" r="5" stroke="white" stroke-width="1.8"/>
+        <a href="https://www.instagram.com/estudiomacor" target="_blank" class="social-pill">
+          <div class="social-pill-icon social-pill-icon--ig">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/>
+              <circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/>
               <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
             </svg>
-            <span class="social-card-v2-netname">Instagram</span>
           </div>
-          <div class="social-card-v2-body">
-            <div class="social-card-v2-handle">@estudiomacor</div>
+          <div class="social-pill-info">
+            <span class="social-pill-name">Instagram</span>
+            <span class="social-pill-handle">@estudiomacor</span>
           </div>
+          <svg class="social-pill-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
 
         <!-- FACEBOOK -->
-        <a href="https://www.facebook.com/estudiomacor" target="_blank" class="social-card-v2">
-          <div class="social-card-v2-top social-card-v2-top--fb">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 2H15C13.67 2 12.4 2.53 11.46 3.46C10.53 4.4 10 5.67 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73 14.11 6.48 14.29 6.29C14.48 6.11 14.73 6 15 6H18V2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <a href="https://www.facebook.com/estudiomacor" target="_blank" class="social-pill">
+          <div class="social-pill-icon social-pill-icon--fb">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M18 2H15C13.67 2 12.4 2.53 11.46 3.46C10.53 4.4 10 5.67 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73 14.11 6.48 14.29 6.29C14.48 6.11 14.73 6 15 6H18V2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span class="social-card-v2-netname">Facebook</span>
           </div>
-          <div class="social-card-v2-body">
-            <div class="social-card-v2-handle">Estudio MACOR</div>
+          <div class="social-pill-info">
+            <span class="social-pill-name">Facebook</span>
+            <span class="social-pill-handle">Estudio MACOR</span>
           </div>
+          <svg class="social-pill-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
 
       </div>
