@@ -88,8 +88,8 @@
     /* HERO */
     .hero {
       min-height: calc(100vh - 70px);
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
       padding: 80px 60px; background: var(--bg-alt);
       position: relative; overflow: hidden;
     }
@@ -109,11 +109,11 @@
     .hero h1 {
       font-family: 'Libre Baskerville', serif;
       font-size: 58px; font-weight: 700; line-height: 1.1;
-      letter-spacing: -1.5px; color: var(--text); margin-bottom: 22px;
+      letter-spacing: -1.5px; color: var(--text); margin-bottom: 22px; max-width: 700px;
     }
     .hero h1 em { font-style: normal; color: var(--gold); font-weight: 700; }
-    .hero p { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 440px; }
-    .hero-btns { display: flex; gap: 14px; }
+    .hero p { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.75; margin-bottom: 36px; max-width: 560px; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; }
     .btn-primary {
       background: var(--blue); color: white; border: none;
       padding: 15px 30px; border-radius: 8px; font-size: 17px; font-weight: 600;
@@ -267,7 +267,8 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .contact-bar-inner {
-      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap;
+      max-width: 1200px; margin: 0 auto;
     }
     .contact-bar-item {
       font-size: 13px; color: rgba(255,255,255,0.7);
@@ -275,7 +276,11 @@
       transition: color 0.2s;
     }
     .contact-bar-item:hover { color: var(--gold); }
-    @media (max-width: 900px) { .contact-bar { display: none; } }
+    @media (max-width: 900px) {
+      .contact-bar { padding: 8px 16px; }
+      .contact-bar-inner { gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .contact-bar-item { font-size: 12px; }
+    }
 
     /* FAQ */
     .faq-list { display: flex; flex-direction: column; margin-top: 10px; }
@@ -549,35 +554,12 @@
   <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="fade-up">
-      <img src="EstudioMACOR2.png" alt="Estudio MACOR" style="width:380px;height:auto;display:block;margin-bottom:28px;">
-      <h1>Tu comercio exterior,<br>en <em>manos expertas</em></h1>
+      <img src="EstudioMACOR2.png" alt="Estudio MACOR" style="width:340px;height:auto;display:block;margin-bottom:28px;margin-left:auto;margin-right:auto;">
+      <h1>Tu comercio exterior, en <em>manos expertas</em></h1>
       <p>Asesoramos y gestionamos operaciones de importación y exportación con precisión técnica, seguridad jurídica y acompañamiento personalizado en cada etapa del proceso.</p>
       <div class="hero-btns">
         <a href="#contacto" class="btn-primary">Solicitar asesoramiento →</a>
         <a href="#servicios" class="btn-secondary">Ver servicios</a>
-      </div>
-    </div>
-    <div class="hero-stats fade-up" style="transition-delay:0.15s">
-      <div class="feat-card">
-        <div class="feat-icon">🚢</div>
-        <div class="feat-body">
-          <div class="feat-num">+6.000</div>
-          <div class="feat-lbl">Operaciones gestionadas</div>
-        </div>
-      </div>
-      <div class="feat-card feat-card--gold">
-        <div class="feat-icon">🌐</div>
-        <div class="feat-body">
-          <div class="feat-num">Mundial</div>
-          <div class="feat-lbl">Cobertura internacional</div>
-        </div>
-      </div>
-      <div class="feat-card feat-card--dark">
-        <div class="feat-icon">🛡️</div>
-        <div class="feat-body">
-          <div class="feat-num">100%</div>
-          <div class="feat-lbl">Seguridad jurídica garantizada</div>
-        </div>
       </div>
     </div>
   </section>
@@ -664,7 +646,7 @@
           Estudio MACOR nació en Rosario con una visión clara: brindar un servicio de despacho aduanero que combinara el rigor técnico con el trato cercano y personalizado que merecen nuestros clientes.
         </p>
         <p style="font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:20px;">
-          A lo largo de nuestra trayectoria, acumulamos más de 6.000 operaciones exitosas en importación, exportación y logística internacional, trabajando con empresas de todos los tamaños y sectores a lo largo y ancho del país.
+          Con 26 años de trayectoria, acumulamos más de 6.000 operaciones exitosas en importación, exportación y logística internacional, trabajando con empresas de todos los tamaños y sectores a lo largo y ancho del país.
         </p>
         <p style="font-size:17px;color:var(--muted);line-height:1.8;">
           Hoy somos un equipo de profesionales apasionados por el comercio exterior, comprometidos con la excelencia y siempre atentos a los cambios normativos que pueden impactar en los negocios de nuestros clientes.
@@ -680,8 +662,8 @@
           <div style="font-size:17px;color:var(--muted);margin-top:6px;">Cobertura internacional — todos los países</div>
         </div>
         <div style="background:var(--gold-light);border:1px solid var(--gold);border-radius:16px;padding:28px 30px;">
-          <div style="font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;color:var(--gold-mid);line-height:1;">Rosario</div>
-          <div style="font-size:17px;color:var(--muted);margin-top:6px;">Con presencia y arraigo en nuestra ciudad</div>
+          <div style="font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;color:var(--gold-mid);line-height:1;">26 años</div>
+          <div style="font-size:17px;color:var(--muted);margin-top:6px;">De trayectoria en comercio exterior</div>
         </div>
       </div>
     </div>
@@ -765,7 +747,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;">
       <div style="padding:70px 60px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
         <div class="section-label fade-up">Dónde estamos</div>
-        <div class="section-title fade-up" style="margin-bottom:0;">Encontranos en Rosario</div>
+        <div class="section-title fade-up" style="margin-bottom:0;">Nuestra oficina</div>
         <p class="fade-up" style="font-size:17px;color:var(--muted);line-height:1.75;">Nuestra oficina está ubicada en Rosario, Santa Fe. Podés visitarnos o contactarnos para coordinar una reunión.</p>
         <div class="fade-up" style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
           <div style="display:flex;align-items:center;gap:12px;font-size:16px;">
