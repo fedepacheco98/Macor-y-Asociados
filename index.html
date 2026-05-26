@@ -284,13 +284,13 @@
     .social-card-v2:hover .social-card-v2-btn { gap: 6px; }
 
     /* SELECT ARROW */
-    .contact-form select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.6)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 38px;
-      cursor: pointer;
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '▾';
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      color: rgba(255,255,255,0.6); font-size: 16px; pointer-events: none;
     }
+    .select-wrap select { padding-right: 38px; }
 
     /* ── HAMBURGER ── */
     .hamburger {
@@ -331,11 +331,13 @@
 
     /* ── TABLET (≤ 900px) ── */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; height: 70px; }
+      nav { padding: 0 20px; height: 70px; justify-content: space-between; }
       nav .nav-links, nav .nav-cta { display: none; }
       .hamburger { display: flex; }
 
-      /* NAV LOGO */
+      /* NAV LOGO centrado en móvil */
+      nav { position: relative; }
+      nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); }
       nav .nav-logo img { height: 44px; width: auto; }
 
       .hero {
@@ -367,13 +369,14 @@
       .contact-inner { grid-template-columns: 1fr; gap: 40px; }
       .form-row { grid-template-columns: 1fr; gap: 12px; }
 
-      /* SOCIAL */
       .social-card-v2-netname { font-size: 20px; }
       .social-card-v2-handle { font-size: 15px; }
 
-      footer { padding: 32px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      /* FOOTER centrado */
+      footer { padding: 32px 20px; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
       .footer-links { display: none; }
       footer img[alt="Estudio MACOR"] { width: 140px !important; }
+      .footer-copy { text-align: center; }
     }
 
     /* ── MOBILE (≤ 480px) ── */
@@ -436,9 +439,10 @@
       .contact-form input, .contact-form textarea, .contact-form select { font-size: 15px; padding: 12px 14px; }
       .contact-form button { font-size: 16px; padding: 14px; }
 
-      footer { padding: 24px 16px; }
+      footer { padding: 24px 16px; align-items: center; text-align: center; }
       footer img[alt="Estudio MACOR"] { width: 120px !important; }
-      .footer-copy { font-size: 12px; }
+      .footer-copy { font-size: 12px; text-align: center; }
+      nav .nav-logo img { height: 34px; }
     }
   </style>
 </head>
@@ -727,6 +731,7 @@
           <input type="text" placeholder="Ciudad">
           <input type="text" placeholder="Provincia / País">
         </div>
+        <div class="select-wrap">
         <select>
           <option value="" disabled selected>Tipo de consulta</option>
           <option>Importación</option>
@@ -736,6 +741,7 @@
           <option>Asesoramiento</option>
           <option>Otro</option>
         </select>
+        </div>
         <textarea placeholder="Describí tu consulta o necesidad con el mayor detalle posible..."></textarea>
         <button type="submit">Enviar consulta →</button>
       </form>
