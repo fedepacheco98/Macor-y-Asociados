@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudio MACOR — Despacho Aduanero y Logística</title>
+  <title>Estudio MACOR — Despacho Aduanero y Logística | Rosario</title>
+  <meta name="description" content="Estudio MACOR — Despachantes de aduana en Rosario. Más de 6.000 operaciones exitosas. Importación, exportación, permisos de embarque y logística internacional. Asesoramiento personalizado.">
+  <meta name="keywords" content="despacho aduanero Rosario, despachante de aduana, importación, exportación, permiso de embarque, logística internacional, AFIP DGA, comercio exterior Rosario, Estudio MACOR">
+  <meta name="author" content="Estudio MACOR">
+  <meta property="og:title" content="Estudio MACOR — Despacho Aduanero y Logística">
+  <meta property="og:description" content="Más de 6.000 operaciones exitosas en comercio exterior. Importación, exportación y logística desde Rosario.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="faviconMACOR.png">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -245,6 +260,55 @@
     .footer-links a:hover { color: rgba(255,255,255,0.75); }
     .footer-copy { font-size: 14px; color: rgba(255,255,255,0.3); }
 
+    /* CONTACT BAR */
+    .contact-bar {
+      background: var(--blue-dark);
+      padding: 9px 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .contact-bar-inner {
+      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+    }
+    .contact-bar-item {
+      font-size: 13px; color: rgba(255,255,255,0.7);
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .contact-bar-item:hover { color: var(--gold); }
+    @media (max-width: 900px) { .contact-bar { display: none; } }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; margin-top: 10px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 0; font-size: 17px; font-weight: 600;
+      font-family: 'Source Sans 3', sans-serif; color: var(--text);
+      text-align: left; gap: 16px; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--blue); }
+    .faq-arrow { font-size: 20px; color: var(--gold); flex-shrink: 0; transition: transform 0.3s; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s ease;
+    }
+    .faq-a.open { max-height: 300px; padding-bottom: 20px; }
+    .faq-a p { font-size: 16px; color: var(--muted); line-height: 1.75; }
+
+    /* MAP RESPONSIVE */
+    @media (max-width: 900px) {
+      #mapa > div { grid-template-columns: 1fr !important; }
+      #mapa > div > div:first-child { padding: 50px 20px; }
+      #mapa iframe { min-height: 300px !important; height: 300px !important; }
+    }
+
+    /* QUIENES SOMOS RESPONSIVE */
+    @media (max-width: 900px) {
+      #quienes > div { grid-template-columns: 1fr !important; gap: 36px !important; }
+    }
+
     hr { border: none; border-top: 1px solid var(--border); margin: 0; }
 
     /* ANIMATIONS */
@@ -435,6 +499,24 @@
 </head>
 <body>
 
+  <!-- CONTACT BAR -->
+  <div class="contact-bar">
+    <div class="contact-bar-inner">
+      <a href="tel:+543410000000" class="contact-bar-item">
+        <span>📞</span> +54 341 000-0000
+      </a>
+      <a href="mailto:info@macor.com.ar" class="contact-bar-item">
+        <span>✉️</span> info@macor.com.ar
+      </a>
+      <span class="contact-bar-item">
+        <span>🕐</span> Lun–Vie 9 a 18 hs
+      </span>
+      <span class="contact-bar-item">
+        <span>📍</span> Rosario, Santa Fe
+      </span>
+    </div>
+  </div>
+
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
@@ -443,6 +525,7 @@
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#operaciones">Operaciones</a></li>
+      <li><a href="#quienes">Quiénes somos</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#herramientas">Herramientas</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -457,6 +540,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#servicios" onclick="closeMenu()">Servicios</a>
     <a href="#operaciones" onclick="closeMenu()">Operaciones</a>
+    <a href="#quienes" onclick="closeMenu()">Quiénes somos</a>
     <a href="#nosotros" onclick="closeMenu()">Nosotros</a>
     <a href="#herramientas" onclick="closeMenu()">Herramientas</a>
     <a href="#contacto" class="mobile-cta" onclick="closeMenu()">Consultar ahora</a>
@@ -569,6 +653,146 @@
       </div>
     </div>
   </section>
+
+  <!-- QUIENES SOMOS -->
+  <section id="quienes" style="background:var(--bg-alt)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+      <div class="fade-up">
+        <div class="section-label">Quiénes somos</div>
+        <div class="section-title">Una historia construida sobre la confianza</div>
+        <p style="font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:20px;">
+          Estudio MACOR nació en Rosario con una visión clara: brindar un servicio de despacho aduanero que combinara el rigor técnico con el trato cercano y personalizado que merecen nuestros clientes.
+        </p>
+        <p style="font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:20px;">
+          A lo largo de nuestra trayectoria, acumulamos más de 6.000 operaciones exitosas en importación, exportación y logística internacional, trabajando con empresas de todos los tamaños y sectores a lo largo y ancho del país.
+        </p>
+        <p style="font-size:17px;color:var(--muted);line-height:1.8;">
+          Hoy somos un equipo de profesionales apasionados por el comercio exterior, comprometidos con la excelencia y siempre atentos a los cambios normativos que pueden impactar en los negocios de nuestros clientes.
+        </p>
+      </div>
+      <div class="fade-up" style="transition-delay:0.15s;display:flex;flex-direction:column;gap:20px;">
+        <div style="background:var(--blue);border-radius:16px;padding:32px 30px;color:white;">
+          <div style="font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;color:var(--gold);line-height:1;">+6.000</div>
+          <div style="font-size:17px;color:rgba(255,255,255,0.75);margin-top:6px;">Operaciones exitosas</div>
+        </div>
+        <div style="background:white;border:1px solid var(--border);border-radius:16px;padding:28px 30px;">
+          <div style="font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;color:var(--blue);line-height:1;">100%</div>
+          <div style="font-size:17px;color:var(--muted);margin-top:6px;">Cobertura internacional — todos los países</div>
+        </div>
+        <div style="background:var(--gold-light);border:1px solid var(--gold);border-radius:16px;padding:28px 30px;">
+          <div style="font-family:'Libre Baskerville',serif;font-size:48px;font-weight:700;color:var(--gold-mid);line-height:1;">Rosario</div>
+          <div style="font-size:17px;color:var(--muted);margin-top:6px;">Con presencia y arraigo en nuestra ciudad</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-label fade-up">Preguntas frecuentes</div>
+    <div class="section-title fade-up">Lo que más nos consultan</div>
+    <div class="faq-list fade-up">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué documentación necesito para importar?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Para una importación estándar necesitás: factura comercial del proveedor, lista de empaque (packing list), conocimiento de embarque o guía aérea (BL o AWB), certificado de origen si aplica, y los permisos previos según el tipo de mercadería (SIMI, SIVEP, etc.). Te asesoramos en cada caso particular.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuánto tarda un despacho de importación?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>El tiempo varía según el canal de selectividad asignado por la AFIP-DGA (verde, naranja o rojo), el tipo de mercadería y los permisos previos requeridos. Un despacho en canal verde puede resolverse en 24-48 horas hábiles. Te informamos el estado en tiempo real durante todo el proceso.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Trabajan con todos los tipos de mercadería?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Sí, tenemos experiencia en una amplia variedad de productos: maquinaria industrial, insumos, alimentos, productos químicos, textiles, tecnología y más. Contamos con conocimiento específico de los organismos intervinientes para cada tipo de mercadería.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué es el permiso de embarque y cuándo se necesita?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>El permiso de embarque es el documento habilitante para exportar mercadería desde Argentina. Se tramita ante la AFIP-DGA antes de cargar la mercadería en el medio de transporte. Es obligatorio para toda exportación formal y lo gestionamos de manera completa.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo se calculan los aranceles y tributos de importación?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Los tributos dependen de la posición arancelaria (NCM) de la mercadería y su valor en aduana. Incluyen Derecho de Importación, IVA, IVA adicional, Impuesto a las Ganancias y estadística, entre otros. Te brindamos una estimación detallada antes de cada operación.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Trabajan con empresas de todo el país o solo de Rosario?
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Trabajamos con clientes de todo el país. Si bien tenemos nuestra base en Rosario, gestionamos operaciones en los principales puertos y aeropuertos de Argentina. La comunicación es siempre fluida y personalizada sin importar dónde estés.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- MAPA -->
+  <section id="mapa" style="background:var(--bg-alt);padding:0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;">
+      <div style="padding:70px 60px;display:flex;flex-direction:column;justify-content:center;gap:20px;">
+        <div class="section-label fade-up">Dónde estamos</div>
+        <div class="section-title fade-up" style="margin-bottom:0;">Encontranos en Rosario</div>
+        <p class="fade-up" style="font-size:17px;color:var(--muted);line-height:1.75;">Nuestra oficina está ubicada en Rosario, Santa Fe. Podés visitarnos o contactarnos para coordinar una reunión.</p>
+        <div class="fade-up" style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+          <div style="display:flex;align-items:center;gap:12px;font-size:16px;">
+            <span style="font-size:20px;">📍</span>
+            <span style="color:var(--text);font-weight:500;">Rosario, Santa Fe, Argentina</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:16px;">
+            <span style="font-size:20px;">📞</span>
+            <a href="tel:+543410000000" style="color:var(--blue);font-weight:500;text-decoration:none;">+54 341 000-0000</a>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;font-size:16px;">
+            <span style="font-size:20px;">✉️</span>
+            <a href="mailto:info@macor.com.ar" style="color:var(--blue);font-weight:500;text-decoration:none;">info@macor.com.ar</a>
+          </div>
+        </div>
+      </div>
+      <div style="min-height:420px;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106704.78!2d-60.6505!3d-32.9442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b652e73fc18f57%3A0xfef8a3f1154c9e6e!2sRosario%2C%20Santa%20Fe!5e0!3m2!1ses!2sar!4v1"
+          width="100%" height="100%" style="border:0;display:block;min-height:420px;"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <hr>
 
   <!-- NOSOTROS -->
   <section id="nosotros">
@@ -747,9 +971,9 @@
       <img src="EstudioMACOR2.png" alt="Estudio MACOR" style="width:180px;height:auto;display:block;filter:invert(1);opacity:0.85;">
     </div>
     <div class="footer-links">
-      <a href="#servicios">Servicios</a>
-      <a href="#operaciones">Operaciones</a>
+      <a href="#quienes">Quiénes somos</a>
       <a href="#nosotros">Nosotros</a>
+      <a href="#faq">FAQ</a>
       <a href="#herramientas">Herramientas</a>
       <a href="#contacto">Contacto</a>
       <a href="#">UIF / Cumplimiento</a>
@@ -774,6 +998,19 @@
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
       document.body.style.overflow = '';
+    }
+
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q.open').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
     }
 
     function handleSubmit(e) {
